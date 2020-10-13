@@ -15,7 +15,7 @@ import SamsungHealthAndroid from "react-native-samsung-health-android";
 
 // ...
 
-const result = await SamsungHealthAndroid.multiply(3, 7);
+const instance = await SamsungHealthAndroid.initialize();
 ```
 
 ## Contributing
