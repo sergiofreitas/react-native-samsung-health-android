@@ -1,4 +1,4 @@
-package com.example.reactnativesamsunghealthandroid;
+package com.samsung.android.simplehealth;
 
 import com.facebook.react.ReactActivity;
 
