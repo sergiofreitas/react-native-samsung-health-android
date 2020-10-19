@@ -1,6 +1,6 @@
 {
   "name": "react-native-samsung-health-android",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "React native bridge to connect with samsung health sdk for android",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
