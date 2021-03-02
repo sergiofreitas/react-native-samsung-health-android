@@ -40,22 +40,22 @@ SamsungHealthAndroid.createMetric = (
     case SamsungHealthAndroid.Types.StepCount:
       properties = ['calorie', 'count', 'distance', 'speed'];
       break;
-    case 'Sleep':
+    case SamsungHealthAndroid.Types.Sleep:
       properties = ['custom', 'comment'];
       break;
-    case 'SleepStage':
+    case SamsungHealthAndroid.Types.SleepStage:
       properties = ['stage', 'sleep_id'];
       break;
-    case 'CaffeineIntake':
+    case SamsungHealthAndroid.Types.CaffeineIntake:
       properties = ['amount', 'unit_amount'];
       break;
-    case 'BodyTemperature':
+    case SamsungHealthAndroid.Types.BodyTemperature:
       properties = ['temperature'];
       break;
-    case 'BloodPressure':
+    case SamsungHealthAndroid.Types.BloodPressure:
       properties = ['diastolic', 'mean', 'pulse', 'systolic'];
       break;
-    case 'Electrocardiogram':
+    case SamsungHealthAndroid.Types.Electrocardiogram:
       properties = [
         'data',
         'data_format',
@@ -66,7 +66,7 @@ SamsungHealthAndroid.createMetric = (
         'sample_frequency',
       ];
       break;
-    case 'HeartRate':
+    case SamsungHealthAndroid.Types.HeartRate:
       properties = [
         'min',
         'max',
@@ -75,10 +75,10 @@ SamsungHealthAndroid.createMetric = (
         'binning_data',
       ];
       break;
-    case 'OxygenSaturation':
+    case SamsungHealthAndroid.Types.OxygenSaturation:
       properties = ['heart_rate', 'spo2'];
       break;
-    case 'AmbientTemperature':
+    case SamsungHealthAndroid.Types.AmbientTemperature:
       properties = [
         'accuracy',
         'altitude',
@@ -88,7 +88,7 @@ SamsungHealthAndroid.createMetric = (
         'temperature',
       ];
       break;
-    case 'UvExposure':
+    case SamsungHealthAndroid.Types.UvExposure:
       properties = [
         'accuracy',
         'altitude',
