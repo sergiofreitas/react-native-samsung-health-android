@@ -42,7 +42,7 @@ class BuildPayload {
 
         Log.d("ReactNative", "transforming data")
 
-        for(prop in properties) {
+        for(prop in this.properties) {
             if (prop in accessWithFloat) {
                 item.putDouble(prop, data.getFloat(prop).toDouble())
             }
@@ -57,10 +57,10 @@ class BuildPayload {
     }
 
     fun push(data: HealthData) {
-        payload.pushMap(transformData(data))
+        this.payload.pushMap(this.transformData(data))
     }
 
     fun toArray(): WritableArray {
-        return payload
+        return this.payload
     }
 }
