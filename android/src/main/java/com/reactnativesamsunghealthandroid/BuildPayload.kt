@@ -11,11 +11,27 @@ import com.samsung.android.sdk.healthdata.HealthData
 val accessWithFloat = arrayOf(
         HealthConstants.StepCount.CALORIE,
         HealthConstants.StepCount.SPEED,
-        HealthConstants.StepCount.DISTANCE
+        HealthConstants.StepCount.DISTANCE,
+        HealthConstants.BodyTemperature.TEMPERATURE,
+        HealthConstants.BloodPressure.SYSTOLIC,
+        HealthConstants.BloodPressure.DIASTOLIC,
+        HealthConstants.BloodPressure.MEAN
 )
 
 val accessWithInt = arrayOf(
-        HealthConstants.StepCount.COUNT
+        HealthConstants.StepCount.COUNT,
+        HealthConstants.SleepStage.STAGE,
+        HealthConstants.BloodPressure.PULSE
+)
+
+val accessWithString = arrayOf(
+        HealthConstants.Sleep.COMMENT
+)
+
+val accessWithLong = arrayOf(
+        HealthConstants.Common.UPDATE_TIME,
+        HealthConstants.SessionMeasurement.START_TIME,
+        HealthConstants.SessionMeasurement.END_TIME
 )
 // var accessWithLong = arrayOf()
 
@@ -48,6 +64,12 @@ class BuildPayload {
             }
             if (prop in accessWithInt) {
                 item.putInt(prop, data.getInt(prop))
+            }
+            if (prop in accessWithString) {
+                item.putInt(prop, data.getInt(prop))
+            }
+            if (prop in accessWithLong) {
+                item.putDouble(prop, data.getLong(prop).toDouble())
             }
         }
 

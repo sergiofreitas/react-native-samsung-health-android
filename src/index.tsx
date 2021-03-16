@@ -38,22 +38,22 @@ SamsungHealthAndroid.createMetric = (
 
   switch (type) {
     case SamsungHealthAndroid.Types.StepCount:
-      properties = ['calorie', 'count', 'distance', 'speed'];
+      properties = ['update_time', 'calorie', 'count', 'distance', 'speed'];
       break;
     case SamsungHealthAndroid.Types.Sleep:
-      properties = ['custom', 'comment'];
+      properties = ['start_time', 'end_time', 'custom', 'comment'];
       break;
     case SamsungHealthAndroid.Types.SleepStage:
-      properties = ['stage', 'sleep_id'];
+      properties = ['start_time', 'end_time', 'stage', 'sleep_id'];
       break;
     case SamsungHealthAndroid.Types.CaffeineIntake:
-      properties = ['amount', 'unit_amount'];
+      properties = ['update_time', 'amount', 'unit_amount'];
       break;
     case SamsungHealthAndroid.Types.BodyTemperature:
-      properties = ['temperature'];
+      properties = ['update_time', 'temperature'];
       break;
     case SamsungHealthAndroid.Types.BloodPressure:
-      properties = ['diastolic', 'mean', 'pulse', 'systolic'];
+      properties = ['update_time', 'diastolic', 'mean', 'pulse', 'systolic'];
       break;
     case SamsungHealthAndroid.Types.Electrocardiogram:
       properties = [
@@ -64,6 +64,7 @@ SamsungHealthAndroid.createMetric = (
         'min_heart_rate',
         'sample_count',
         'sample_frequency',
+        'update_time',
       ];
       break;
     case SamsungHealthAndroid.Types.HeartRate:
@@ -73,10 +74,11 @@ SamsungHealthAndroid.createMetric = (
         'heart_rate',
         'heart_bate_count',
         'binning_data',
+        'update_time',
       ];
       break;
     case SamsungHealthAndroid.Types.OxygenSaturation:
-      properties = ['heart_rate', 'spo2'];
+      properties = ['update_time', 'heart_rate', 'spo2'];
       break;
     case SamsungHealthAndroid.Types.AmbientTemperature:
       properties = [
@@ -86,6 +88,7 @@ SamsungHealthAndroid.createMetric = (
         'latitude',
         'longitude',
         'temperature',
+        'update_time',
       ];
       break;
     case SamsungHealthAndroid.Types.UvExposure:
@@ -95,6 +98,7 @@ SamsungHealthAndroid.createMetric = (
         'latitude',
         'longitude',
         'uv_index',
+        'update_time',
       ];
       break;
     default:
