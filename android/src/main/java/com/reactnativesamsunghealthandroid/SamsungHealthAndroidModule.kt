@@ -17,7 +17,7 @@ class SamsungHealthAndroidModule(reactContext: ReactApplicationContext) : ReactC
 
     override fun getConstants(): Map<String, Any>? {
         val reactConstants = HashMap<String, Any>()
-
+        reactConstants.put("DailyTrend",HealthConstants.StepDailyTrend.COUNT)
         reactConstants.put("StepCount", HealthConstants.StepCount.HEALTH_DATA_TYPE)
         reactConstants.put("Sleep", HealthConstants.Sleep.HEALTH_DATA_TYPE)
         reactConstants.put("SleepStage", HealthConstants.SleepStage.HEALTH_DATA_TYPE)
@@ -29,7 +29,6 @@ class SamsungHealthAndroidModule(reactContext: ReactApplicationContext) : ReactC
         reactConstants.put("OxygenSaturation", HealthConstants.OxygenSaturation.HEALTH_DATA_TYPE)
         reactConstants.put("AmbientTemperature", HealthConstants.AmbientTemperature.HEALTH_DATA_TYPE)
         reactConstants.put("UvExposure", HealthConstants.UvExposure.HEALTH_DATA_TYPE)
-
         return reactConstants
     }
 
