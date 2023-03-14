@@ -7,6 +7,7 @@ import com.facebook.react.bridge.*
 import com.reactnativesamsunghealthandroid.DataStore
 import com.samsung.android.sdk.healthdata.HealthConstants
 
+
 class SamsungHealthAndroidModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     var showLogs: Boolean = false
     private var store: DataStore? = null

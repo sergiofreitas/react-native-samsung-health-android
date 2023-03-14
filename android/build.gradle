@@ -8,7 +8,42 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.2.1'
+/*
+ * Copyright (C) 2014 Samsung Electronics Co., Ltd. All rights reserved.
+ *
+ * Mobile Communication Division,
+ * Digital Media & Communications Business, Samsung Electronics Co., Ltd.
+ *
+ * This software and its documentation are confidential and proprietary
+ * information of Samsung Electronics Co., Ltd.  No part of the software and
+ * documents may be copied, reproduced, transmitted, translated, or reduced to
+ * any electronic medium or machine-readable form without the prior written
+ * consent of Samsung Electronics.
+ *
+ * Samsung Electronics makes no representations with respect to the contents,
+ * and assumes no responsibility for any errors that might appear in the
+ * software and documents. This publication and the contents hereof are subject
+ * to change without notice.
+ */
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
     // noinspection DifferentKotlinGradleVersion
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
@@ -33,9 +68,9 @@ android {
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
     versionCode 1
     versionName "1.0"
-    
+
   }
-  
+
   buildTypes {
     release {
       minifyEnabled false
@@ -124,9 +159,11 @@ repositories {
 def kotlin_version = getExtOrDefault('kotlinVersion')
 
 dependencies {
-  implementation fileTree(dir: 'libs', include: '*.jar')
-
   // noinspection GradleDynamicVersion
   api 'com.facebook.react:react-native:+'
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  implementation files('libs/samsung-health-data-1.5.0.aar')
+
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
 }
