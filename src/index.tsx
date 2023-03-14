@@ -37,6 +37,9 @@ SamsungHealthAndroid.createMetric = (
   let properties: string[] = [];
 
   switch (type) {
+    case SamsungHealthAndroid.Types.DailyTrend:
+      properties = ['calorie', 'count', 'distance', 'speed'];
+      break;
     case SamsungHealthAndroid.Types.StepCount:
       properties = ['update_time', 'calorie', 'count', 'distance', 'speed'];
       break;
