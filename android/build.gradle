@@ -1,7 +1,6 @@
 buildscript {
   // Buildscript is evaluated before everything else so we can't use getExtOrDefault
-  def kotlin_version = rootProject.ext.has('kotlinVersion') ? rootProject.ext.get('kotlinVersion') : project.properties['SamsungHealthAndroid_kotlinVersion']
-
+  def kotlin_version = "1.5.3"
   repositories {
     google()
     jcenter()
@@ -33,8 +32,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
+      classpath 'com.android.tools.build:gradle:7.1.1'
+      classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10"
     }
 }
 
@@ -163,6 +162,6 @@ dependencies {
   api 'com.facebook.react:react-native:+'
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"
     implementation files('libs/samsung-health-data-1.5.0.aar')
 }
