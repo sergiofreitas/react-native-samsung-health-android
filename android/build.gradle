@@ -1,7 +1,6 @@
 buildscript {
   // Buildscript is evaluated before everything else so we can't use getExtOrDefault
-  def kotlin_version = rootProject.ext.has('kotlinVersion') ? rootProject.ext.get('kotlinVersion') : project.properties['SamsungHealthAndroid_kotlinVersion']
-
+  def kotlin_version = "1.5.3"
   repositories {
     google()
     jcenter()
@@ -26,24 +25,24 @@ buildscript {
  * to change without notice.
  */
 
-buildscript {
+    buildscript {
 
-    repositories {
+      repositories {
         google()
         jcenter()
+      }
+      dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10"
+      }
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
-    }
-}
 
-allprojects {
-    repositories {
+    allprojects {
+      repositories {
         google()
         jcenter()
+      }
     }
-}
     // noinspection DifferentKotlinGradleVersion
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
@@ -83,6 +82,9 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
+  buildFeatures {
+    dataBinding = true
+  }
 }
 
 repositories {
@@ -98,8 +100,8 @@ repositories {
     defaultDir = rootProject.ext.get('reactNativeAndroidRoot')
   } else {
     defaultDir = new File(
-            projectDir,
-            '/../../../node_modules/react-native/android'
+      projectDir,
+      '/../../../node_modules/react-native/android'
     )
   }
 
@@ -119,13 +121,13 @@ repositories {
       parentDir = parentDir.parentFile
 
       def androidSourcesDir = new File(
-              parentDir,
-              'node_modules/react-native'
+        parentDir,
+        'node_modules/react-native'
       )
 
       def androidPrebuiltBinaryDir = new File(
-              parentDir,
-              'node_modules/react-native/android'
+        parentDir,
+        'node_modules/react-native/android'
       )
 
       if (androidPrebuiltBinaryDir.exists()) {
@@ -150,8 +152,8 @@ repositories {
 
   if (!found) {
     throw new GradleException(
-            "${project.name}: unable to locate React Native android sources. " +
-                    "Ensure you have you installed React Native as a dependency in your project and try again."
+      "${project.name}: unable to locate React Native android sources. " +
+        "Ensure you have you installed React Native as a dependency in your project and try again."
     )
   }
 }
@@ -159,11 +161,13 @@ repositories {
 def kotlin_version = getExtOrDefault('kotlinVersion')
 
 dependencies {
-  // noinspection GradleDynamicVersion
+  implementation fileTree(dir: 'libs', include: '*.aar')
   api 'com.facebook.react:react-native:+'
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  implementation 'androidx.recyclerview:recyclerview:1.3.0'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"
   implementation files('libs/samsung-health-data-1.5.0.aar')
+  implementation files('src/main/libs/samsung-health-data-1.5.0.aar')
+  implementation "com.google.code.gson:gson:2.7" // This library is required to use HealthDataUtil.getStructuredDataList()
 
-    implementation 'androidx.recyclerview:recyclerview:1.3.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
 }
