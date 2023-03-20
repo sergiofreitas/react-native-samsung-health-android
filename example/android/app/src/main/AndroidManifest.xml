@@ -16,7 +16,7 @@
 
       <meta-data
         android:name="com.samsung.android.health.permission.read"
-        android:value="com.samsung.health.step_count;com.samsung.health.sleep;com.samsung.health.sleep_stage" />
+        android:value="com.samsung.health.step_count;com.samsung.shealth.step_daily_trend;com.samsung.health.sleep;" />
 
       <activity
         android:name=".MainActivity"
