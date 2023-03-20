@@ -189,8 +189,8 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    // implementation files('../..android/libs/samsung-health-data-1.5.0.aar')
-    // releaseImplementation files('../../node_modules/react-native-samsung-health-android/android/libs/samsung-health-data-1.5.0.aar')
+    implementation files('../../android/libs/samsung-health-data-1.5.0.aar')
+    releaseImplementation files('../../android/libs/samsung-health-data-1.5.0.aar')
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
