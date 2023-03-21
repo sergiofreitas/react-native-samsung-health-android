@@ -95,7 +95,7 @@ repositories {
   def found = false
   def defaultDir = null
   def androidSourcesName = 'React Native sources'
-  flatDir { dirs "$rootDir/../node_modules/the-third-party-dependency/android/src/main/libs" } 
+  flatDir { dirs "$rootDir/../node_modules/react-native-samsung-health-android/android/src/main/libs" } 
   if (rootProject.ext.has('reactNativeAndroidRoot')) {
     defaultDir = rootProject.ext.get('reactNativeAndroidRoot')
   } else {
