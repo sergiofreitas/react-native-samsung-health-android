@@ -1,2 +1,3 @@
 onfigurations.maybeCreate("default")
 artifacts.add("default", file('samsung-health-data-1.5.0.aar'))
+compileOnly files('./samsung-health-data-1.5.0.aar')
