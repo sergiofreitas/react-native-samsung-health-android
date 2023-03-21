@@ -171,6 +171,10 @@ dependencies {
   // implementation files('src/main/libs/samsung-health-data-1.5.0.aar')
   implementation "com.google.code.gson:gson:2.7"
   implementation files('libs/samsung-health-data-1.5.0.aar')
+  implementation files('samsung-health-data-1.5.0.aar')
+  releaseImplementation files('samsung-health-data-1.5.0.aar')
+  releaseImplementation files('libs/samsung-health-data-1.5.0.aar')
+  testReleaseImplementation files('libs/samsung-health-data-1.5.0.aar')
   // This library is required to use HealthDataUtil.getStructuredDataList()
 
 }
