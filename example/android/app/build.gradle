@@ -208,7 +208,7 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-
+    api project(':samsung-health-data')
     implementation project(':reactnativesamsunghealthandroid')
 }
 
