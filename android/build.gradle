@@ -163,7 +163,6 @@ def kotlin_version = getExtOrDefault('kotlinVersion')
 dependencies {
   implementation fileTree(dir: 'libs', include: '*.aar')
   api 'com.facebook.react:react-native:+'
-  api project(':samsung-health-data')
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation 'androidx.recyclerview:recyclerview:1.3.0'
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"
