@@ -4,4 +4,3 @@ include ':app'
 
 include ':reactnativesamsunghealthandroid'
 project(':reactnativesamsunghealthandroid').projectDir = new File(rootProject.projectDir, '../../android')
-include ':samsung-health-data'

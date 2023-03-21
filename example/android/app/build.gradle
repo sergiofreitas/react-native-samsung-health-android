@@ -200,8 +200,7 @@ dependencies {
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.flipper'
     }
-    implementation 'lib/samsung-health-data-1.5.0.aar'
-    compileOnly files('lib/samsung-health-data-1.5.0.aar')
+
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -209,7 +208,7 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-    // api project(':samsung-health-data')
+
     implementation project(':reactnativesamsunghealthandroid')
 }
 
