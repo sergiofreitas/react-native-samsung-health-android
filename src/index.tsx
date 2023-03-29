@@ -12,6 +12,8 @@ type SamsungHealthAndroidType = {
   readDataAsync(
     metric: SamsungHealthAndroidMetric
   ): Promise<Record<string, number>[]>;
+
+  getStepCountDailie(options: options): Promise<Record<string, number>[]>;
 };
 
 type SamsungHealthAndroidMetric = {
@@ -27,7 +29,17 @@ type SamsungHealthAndroidMetricProps = {
   end: number;
 };
 
+type options = {
+  startDate: string;
+  endDate: string;
+};
+
 const { SamsungHealthAndroid } = NativeModules;
+
+console.log("SamsungHealthAndroid", SamsungHealthAndroid);
+
+
+// const samsungHealth = NativeModules.RNSamsungHealth;
 
 SamsungHealthAndroid.Types = SamsungHealthAndroid.getConstants();
 SamsungHealthAndroid.createMetric = (
@@ -112,6 +124,27 @@ SamsungHealthAndroid.createMetric = (
     ...props,
     properties,
   };
+};
+
+SamsungHealthAndroid.getStepCountDailie = (options: options): any => {
+
+  console.log("options", options);
+  
+  let startDate =
+    options.startDate != undefined
+      ? options.startDate
+      : new Date().setHours(0, 0, 0, 0);
+  let endDate =
+    options.endDate != undefined ? options.endDate : new Date().valueOf();
+
+  return new Promise((resolve, reject) => {
+    SamsungHealthAndroid.readStepCountDailies(
+      startDate,
+      endDate,
+      (msg: any) => reject(msg, false),
+      (res: any) => resolve(res)
+    );
+  });
 };
 
 export default SamsungHealthAndroid as SamsungHealthAndroidType;
