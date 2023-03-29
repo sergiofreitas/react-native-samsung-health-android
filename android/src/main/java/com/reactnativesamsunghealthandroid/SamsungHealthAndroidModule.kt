@@ -1,24 +1,59 @@
 package com.reactnativesamsunghealthandroid
 
-import android.app.Activity
 import android.util.Log
 import com.facebook.react.bridge.*
-
-import com.reactnativesamsunghealthandroid.DataStore
 import com.samsung.android.sdk.healthdata.HealthConstants
+import com.samsung.android.sdk.healthdata.HealthDataResolver
+import com.samsung.android.sdk.healthdata.HealthDataResolver.ReadRequest
+import com.samsung.android.sdk.healthdata.HealthDataStore
 
 
 class SamsungHealthAndroidModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     var showLogs: Boolean = false
     private var store: DataStore? = null
 
-    override fun getName(): String {
+  override fun getName(): String {
         return "SamsungHealthAndroid"
     }
 
-    override fun getConstants(): Map<String, Any>? {
+  fun getStore(): HealthDataStore? {
+    return store!!.mStore
+  }
+
+  @ReactMethod
+  fun readStepCountDailies(
+    startDate: Double,
+    endDate: Double,
+    error: Callback,
+    success: Callback?
+  ) {
+    val resolver = HealthDataResolver(store!!.mStore, null)
+    val filter = HealthDataResolver.Filter.and(
+      HealthDataResolver.Filter.greaterThanEquals("day_time", startDate.toLong()),
+      HealthDataResolver.Filter.lessThanEquals("day_time", endDate.toLong())
+    )
+    val request = ReadRequest.Builder()
+      .setDataType("com.samsung.shealth.step_daily_trend")
+      .setProperties(
+        arrayOf(
+          HealthConstants.StepCount.COUNT, HealthConstants.StepCount.DISTANCE,
+          "day_time", HealthConstants.StepCount.CALORIE,
+          HealthConstants.StepCount.SPEED, HealthConstants.StepCount.DEVICE_UUID
+        )
+      )
+      .setFilter(filter).build()
+    try {
+      resolver.read(request).setResultListener(HealthDataResultListener(this, error, success))
+    } catch (e: Exception) {
+      Log.e("RNSamsungHealth", e.javaClass.name + " - " + e.message)
+      Log.e("RNSamsungHealth", "Getting step count fails.")
+      error.invoke("Getting step count fails.")
+    }
+  }
+
+  override fun getConstants(): Map<String, Any>? {
         val reactConstants = HashMap<String, Any>()
-      reactConstants["DailyTrend"] = HealthConstants.StepDailyTrend.COUNT
+      reactConstants["STEP_DAILY_TREND"] =  "com.samsung.shealth.step_daily_trend"
       reactConstants["StepCount"] = HealthConstants.StepCount.HEALTH_DATA_TYPE
       reactConstants["Sleep"] = HealthConstants.Sleep.HEALTH_DATA_TYPE
       reactConstants["SleepStage"] = HealthConstants.SleepStage.HEALTH_DATA_TYPE
@@ -65,6 +100,11 @@ class SamsungHealthAndroidModule(reactContext: ReactApplicationContext) : ReactC
     @ReactMethod
     fun readDataAsync(metric: ReadableMap, promise: Promise) {
         var reader: ReadHealthData = ReadHealthData(store!!.mStore, metric, promise)
-        reader.readOnce()
+      reader.readOnce()
     }
+//  @ReactMethod
+//  fun readStepCountDailies(metric: ReadableMap, promise: Promise) {
+//    var reader: ReadHealthData = ReadHealthData(store!!.mStore, metric, promise)
+//  }
+
 }

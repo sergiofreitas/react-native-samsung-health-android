@@ -2,7 +2,9 @@ package com.reactnativesamsunghealthandroid;
 
 import android.util.Log;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.Promise;
+import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 
@@ -11,6 +13,8 @@ import com.samsung.android.sdk.healthdata.HealthData;
 import com.samsung.android.sdk.healthdata.HealthDataResolver;
 import com.samsung.android.sdk.healthdata.HealthDataStore;
 import com.samsung.android.sdk.healthdata.HealthResultHolder;
+import com.samsung.android.sdk.healthdata.HealthDataResolver.Filter;
+import com.samsung.android.sdk.healthdata.HealthDataResolver.ReadRequest;
 
 import java.util.Calendar;
 import java.util.Iterator;
