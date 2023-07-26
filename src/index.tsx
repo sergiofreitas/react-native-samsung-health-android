@@ -36,8 +36,7 @@ type options = {
 
 const { SamsungHealthAndroid } = NativeModules;
 
-console.log("SamsungHealthAndroid", SamsungHealthAndroid);
-
+console.log('SamsungHealthAndroid', SamsungHealthAndroid);
 
 // const samsungHealth = NativeModules.RNSamsungHealth;
 
@@ -127,9 +126,7 @@ SamsungHealthAndroid.createMetric = (
 };
 
 SamsungHealthAndroid.getStepCountDailie = (options: options): any => {
-
-  console.log("options", options);
-  
+  console.log('options', options);
   let startDate =
     options.startDate != undefined
       ? options.startDate
@@ -141,7 +138,7 @@ SamsungHealthAndroid.getStepCountDailie = (options: options): any => {
     SamsungHealthAndroid.readStepCountDailies(
       startDate,
       endDate,
-      (msg: any) => reject(msg, false),
+      (msg: any) => reject(msg),
       (res: any) => resolve(res)
     );
   });
